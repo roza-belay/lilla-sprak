@@ -1,0 +1,58 @@
+import type { LearningItem } from '../types/learning'
+
+export const learningItems: LearningItem[] = [
+  {
+    id: 'letter-a',
+    kind: 'letter',
+    language: 'svenska',
+    prompt: 'Vilken bokstav börjar Apa med?',
+    answer: 'A',
+    options: ['A', 'S', 'M'],
+    hint: 'Apa börjar med samma ljud som A.',
+  },
+  {
+    id: 'letter-b',
+    kind: 'letter',
+    language: 'svenska',
+    prompt: 'Vilken bokstav börjar Boll med?',
+    answer: 'B',
+    options: ['D', 'B', 'K'],
+    hint: 'Boll börjar med B.',
+  },
+  {
+    id: 'number-three',
+    kind: 'number',
+    language: 'svenska',
+    prompt: 'Vilken siffra är tre?',
+    answer: '3',
+    options: ['2', '3', '5'],
+    hint: 'Räkna: ett, två, tre.',
+  },
+  {
+    id: 'number-five',
+    kind: 'number',
+    language: 'svenska',
+    prompt: 'Vilken siffra är fem?',
+    answer: '5',
+    options: ['5', '7', '1'],
+    hint: 'Fem fingrar på en hand.',
+  },
+  {
+    id: 'word-sun',
+    kind: 'word',
+    language: 'svenska',
+    prompt: 'Vilket ord betyder sol?',
+    answer: 'Sol',
+    options: ['Sol', 'Hus', 'Bil'],
+    hint: 'Den lyser på dagen.',
+  },
+  {
+    id: 'word-water',
+    kind: 'word',
+    language: 'svenska',
+    prompt: 'Vilket ord betyder vatten?',
+    answer: 'Vatten',
+    options: ['Bok', 'Vatten', 'Skor'],
+    hint: 'Du dricker det.',
+  },
+]

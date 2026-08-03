@@ -1,18 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import { GameBoard, Header } from './components'
 
 function App() {
-
-
   return (
-    <div>
-      <h1>Lilla Språk</h1>
-      <p>Lär dig svenska och tigrinja med bilder.</p>
+    <div className="appShell">
+      <Header
+        title="Lilla Språk"
+        subtitle="Lek dig fram till bokstäver, siffror och första ord."
+      />
+      <main className="appMain">
+        <GameBoard />
+      </main>
     </div>
-  );
+  )
 }
 
 export default App

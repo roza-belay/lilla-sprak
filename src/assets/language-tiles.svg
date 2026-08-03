@@ -1,0 +1,21 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Language learning cards</title>
+  <desc id="desc">Colorful cards with letters, numbers, and simple shapes for a children's language game.</desc>
+  <rect width="640" height="360" rx="28" fill="#FBFAF6"/>
+  <circle cx="118" cy="76" r="34" fill="#DCEEE5"/>
+  <circle cx="536" cy="92" r="42" fill="#FFF2C2"/>
+  <circle cx="514" cy="279" r="30" fill="#FDE4DF"/>
+  <rect x="68" y="92" width="132" height="160" rx="18" fill="white" stroke="#DDD7CB" stroke-width="6"/>
+  <rect x="254" y="64" width="132" height="160" rx="18" fill="white" stroke="#DDD7CB" stroke-width="6"/>
+  <rect x="438" y="111" width="132" height="160" rx="18" fill="white" stroke="#DDD7CB" stroke-width="6"/>
+  <rect x="105" y="271" width="410" height="24" rx="12" fill="#DDD7CB"/>
+  <path d="M126 203L147 136H170L191 203H170L167 191H149L146 203H126ZM153 175H163L158 154L153 175Z" fill="#2F6F73"/>
+  <path d="M316 175C331.464 175 344 162.464 344 147C344 131.536 331.464 119 316 119C300.536 119 288 131.536 288 147C288 162.464 300.536 175 316 175Z" fill="#F4B942"/>
+  <path d="M316 119V175" stroke="#202124" stroke-width="8" stroke-linecap="round"/>
+  <path d="M288 147H344" stroke="#202124" stroke-width="8" stroke-linecap="round"/>
+  <path d="M502 204C526 190 538 176 538 158C538 140 525 128 506 128C486 128 472 141 472 161H493C493 153 498 148 506 148C513 148 518 153 518 160C518 172 506 181 476 199V216H540V196H502V204Z" fill="#E46F5F"/>
+  <path d="M246 256C278 239 311 239 344 256" stroke="#4F7CAC" stroke-width="10" stroke-linecap="round"/>
+  <path d="M285 246C300 236 315 236 330 246" stroke="#2F6F73" stroke-width="8" stroke-linecap="round"/>
+  <rect x="220" y="252" width="38" height="34" rx="9" fill="#4F7CAC"/>
+  <rect x="360" y="252" width="38" height="34" rx="9" fill="#E46F5F"/>
+</svg>
