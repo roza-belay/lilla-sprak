@@ -1,16 +1,16 @@
 :root {
   --color-ink: #202124;
   --color-muted: #5f6368;
-  --color-page: #fbfaf6;
-  --color-panel: #ffffff;
+  --color-page: #93ebe8;
+  --color-panel: #b8faf3;
   --color-border: #d8cfbf;
   --color-primary: #2f6f73;
   --color-primary-strong: #24585c;
-  --color-secondary: #f4b942;
+  --color-secondary: #e48282;
   --color-coral: #e46f5f;
   --color-blue: #4f7cac;
   --color-green-soft: #dceee5;
-  --color-yellow-soft: #fff2c2;
+  --color-yellow-soft: #f8b0ce;
   --color-red-soft: #fde4df;
   --color-sky-soft: #dceef7;
   --shadow-soft: 0 18px 44px rgba(58, 45, 25, 0.12);
