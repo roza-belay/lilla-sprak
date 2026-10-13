@@ -1,7 +1,8 @@
+import type { LearningOption } from '../../types/learning'
 import styles from './LanguageCard.module.css'
 
 type LanguageCardProps = {
-  label: string
+  option: LearningOption
   isCorrect?: boolean
   isSelected?: boolean
   isLocked?: boolean
@@ -9,7 +10,7 @@ type LanguageCardProps = {
 }
 
 const LanguageCard = ({
-  label,
+  option,
   isCorrect = false,
   isSelected = false,
   isLocked = false,
@@ -26,7 +27,16 @@ const LanguageCard = ({
       onClick={onSelect}
       aria-pressed={isSelected}
     >
-      {label}
+      {option.picture ? (
+        <span className={styles.picture} aria-hidden="true">
+          {option.picture}
+        </span>
+      ) : null}
+      <span className={styles.label}>{option.label}</span>
+      {option.subLabel ? (
+        <span className={styles.subLabel}>{option.subLabel}</span>
+      ) : null}
+      {option.note ? <span className={styles.note}>{option.note}</span> : null}
     </button>
   )
 }

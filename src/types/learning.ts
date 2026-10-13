@@ -1,11 +1,23 @@
-export type LearningKind = 'letter' | 'number' | 'word'
+export type LearningKind = 'letter' | 'number' | 'animal'
+
+export type LearningOption = {
+  label: string
+  subLabel?: string
+  picture?: string
+  note?: string
+}
 
 export type LearningItem = {
   id: string
   kind: LearningKind
-  language: 'svenska' | 'tigrinja'
+  language: 'Svenska och tigrinja'
   prompt: string
   answer: string
-  options: string[]
+  options: LearningOption[]
   hint: string
+  picture: string
+  svenska: string
+  tigrinja: string
+  sound?: string
+  shape?: string
 }

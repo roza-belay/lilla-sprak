@@ -5,7 +5,12 @@ const meta = {
   title: 'Components/LanguageCard',
   component: LanguageCard,
   args: {
-    label: 'A',
+    option: {
+      label: 'Hund · ከልቢ',
+      subLabel: 'voff voff',
+      picture: '🐕',
+      note: 'djur',
+    },
     onSelect: () => undefined,
   },
 } satisfies Meta<typeof LanguageCard>

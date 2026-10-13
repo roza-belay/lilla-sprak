@@ -9,18 +9,46 @@ type GamePromptProps = {
 const kindLabels: Record<LearningItem['kind'], string> = {
   letter: 'Bokstav',
   number: 'Siffra',
-  word: 'Ord',
+  animal: 'Djur',
 }
 
 const GamePrompt = ({ item, feedback }: GamePromptProps) => {
   return (
     <section className={styles.prompt} aria-live="polite">
-      <div className={styles.meta}>
-        <span>{kindLabels[item.kind]}</span>
-        <span>{item.language}</span>
+      <div className={styles.picture} aria-hidden="true">
+        {item.picture}
       </div>
-      <h2>{item.prompt}</h2>
-      <p>{feedback ?? item.hint}</p>
+
+      <div className={styles.copy}>
+        <div className={styles.meta}>
+          <span>{kindLabels[item.kind]}</span>
+          <span>{item.language}</span>
+        </div>
+
+        <h2>{item.prompt}</h2>
+
+        <dl className={styles.words}>
+          <div>
+            <dt>Svenska</dt>
+            <dd>{item.svenska}</dd>
+          </div>
+          <div>
+            <dt>Tigrinja</dt>
+            <dd>{item.tigrinja}</dd>
+          </div>
+          {item.sound ? (
+            <div>
+              <dt>Ljud</dt>
+              <dd>{item.sound}</dd>
+            </div>
+          ) : null}
+        </dl>
+
+        {item.shape ? <p className={styles.shape}>{item.shape}</p> : null}
+        <p className={feedback ? styles.feedback : ''}>
+          {feedback ?? item.hint}
+        </p>
+      </div>
     </section>
   )
 }

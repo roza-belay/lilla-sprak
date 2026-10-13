@@ -8,11 +8,65 @@ import ScoreBoard from '../ScoreBoard'
 import styles from './GameBoard.module.css'
 
 const categories: { label: string; value: LearningKind | 'all' }[] = [
-  { label: 'Alla', value: 'all' },
+  { label: 'Allt', value: 'all' },
   { label: 'Bokstäver', value: 'letter' },
   { label: 'Siffror', value: 'number' },
-  { label: 'Ord', value: 'word' },
+  { label: 'Djur', value: 'animal' },
 ]
+
+type AudioWindow = Window &
+  typeof globalThis & {
+    webkitAudioContext?: typeof AudioContext
+  }
+
+const playClap = () => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  const AudioContextConstructor =
+    window.AudioContext ?? (window as AudioWindow).webkitAudioContext
+
+  if (!AudioContextConstructor) {
+    return
+  }
+
+  const audioContext = new AudioContextConstructor()
+  const bufferLength = Math.floor(audioContext.sampleRate * 0.08)
+  const buffer = audioContext.createBuffer(
+    1,
+    bufferLength,
+    audioContext.sampleRate,
+  )
+  const data = buffer.getChannelData(0)
+
+  for (let index = 0; index < bufferLength; index += 1) {
+    const fade = 1 - index / bufferLength
+    data[index] = (Math.random() * 2 - 1) * fade
+  }
+
+  ;[0, 0.06, 0.12].forEach((delay) => {
+    const source = audioContext.createBufferSource()
+    const filter = audioContext.createBiquadFilter()
+    const gain = audioContext.createGain()
+
+    source.buffer = buffer
+    filter.type = 'bandpass'
+    filter.frequency.value = 1400
+    gain.gain.setValueAtTime(0.42, audioContext.currentTime + delay)
+    gain.gain.exponentialRampToValueAtTime(
+      0.01,
+      audioContext.currentTime + delay + 0.08,
+    )
+
+    source.connect(filter)
+    filter.connect(gain)
+    gain.connect(audioContext.destination)
+    source.start(audioContext.currentTime + delay)
+  })
+
+  window.setTimeout(() => void audioContext.close(), 420)
+}
 
 const GameBoard = () => {
   const [category, setCategory] = useState<LearningKind | 'all'>('all')
@@ -32,7 +86,7 @@ const GameBoard = () => {
 
   const feedback = isLocked
     ? isCorrect
-      ? 'Rätt! Snyggt jobbat.'
+      ? 'Rätt! Klappa händerna.'
       : `Nästan. Rätt svar är ${currentItem.answer}.`
     : undefined
 
@@ -44,6 +98,7 @@ const GameBoard = () => {
     setSelectedAnswer(answer)
     if (answer === currentItem.answer) {
       setScore((currentScore) => currentScore + 1)
+      playClap()
     }
   }
 
@@ -85,16 +140,20 @@ const GameBoard = () => {
         <GamePrompt item={currentItem} feedback={feedback} />
 
         <div className={styles.options}>
-          {currentItem.options.map((option) => (
-            <LanguageCard
-              key={option}
-              label={option}
-              isLocked={isLocked}
-              isSelected={selectedAnswer === option}
-              isCorrect={option === currentItem.answer}
-              onSelect={() => handleAnswer(option)}
-            />
-          ))}
+          {currentItem.options.map((option) => {
+            const isOptionCorrect = option.label === currentItem.answer
+
+            return (
+              <LanguageCard
+                key={`${option.label}-${option.subLabel ?? ''}`}
+                option={option}
+                isLocked={isLocked}
+                isSelected={selectedAnswer === option.label}
+                isCorrect={isOptionCorrect}
+                onSelect={() => handleAnswer(option.label)}
+              />
+            )
+          })}
         </div>
 
         <div className={styles.actions}>

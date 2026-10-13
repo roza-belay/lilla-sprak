@@ -6,13 +6,28 @@ const meta = {
   component: GamePrompt,
   args: {
     item: {
-      id: 'letter-a',
-      kind: 'letter',
-      language: 'svenska',
-      prompt: 'Vilken bokstav börjar Apa med?',
-      answer: 'A',
-      options: ['A', 'S', 'M'],
-      hint: 'Apa börjar med samma ljud som A.',
+      id: 'animal-dog',
+      kind: 'animal',
+      language: 'Svenska och tigrinja',
+      prompt: 'Vilket djur heter hund och ከልቢ?',
+      answer: 'Hund · ከልቢ',
+      picture: '🐕',
+      svenska: 'Hund',
+      tigrinja: 'ከልቢ',
+      sound: 'voff voff',
+      options: [
+        {
+          label: 'Hund · ከልቢ',
+          subLabel: 'voff voff',
+          picture: '🐕',
+        },
+        {
+          label: 'Katt · ድሙ',
+          subLabel: 'mjau',
+          picture: '🐈',
+        },
+      ],
+      hint: 'Hunden säger voff voff.',
     },
   },
 } satisfies Meta<typeof GamePrompt>

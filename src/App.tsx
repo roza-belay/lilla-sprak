@@ -5,8 +5,8 @@ function App() {
   return (
     <div className="appShell">
       <Header
-        title="Lilla Språk"
-        subtitle="Lek dig fram till bokstäver, siffror och första ord."
+        title="Lilla språk"
+        subtitle="Lek med bokstäver, fidel, siffror och djur på svenska och tigrinja."
       />
       <main className="appMain">
         <GameBoard />

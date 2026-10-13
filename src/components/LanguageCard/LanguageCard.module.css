@@ -1,16 +1,18 @@
 .card {
-  min-height: 112px;
+  min-height: 188px;
   border: 2px solid var(--color-border);
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 0 8px 20px rgba(58, 45, 25, 0.08);
   color: var(--color-ink);
   display: grid;
+  align-content: center;
   place-items: center;
-  padding: 16px;
-  font-size: clamp(2rem, 8vw, 4rem);
+  gap: 8px;
+  padding: 14px;
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.12;
+  text-align: center;
   transition:
     transform 160ms ease,
     border-color 160ms ease,
@@ -35,4 +37,34 @@
 .wrong {
   background: var(--color-red-soft);
   border-color: var(--color-coral);
+}
+
+.picture {
+  width: 72px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-sky-soft);
+  display: grid;
+  place-items: center;
+  font-size: 2.75rem;
+}
+
+.label {
+  font-size: clamp(1.35rem, 4vw, 2.35rem);
+  overflow-wrap: anywhere;
+}
+
+.subLabel {
+  color: var(--color-muted);
+  font-size: 0.98rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  border-radius: 999px;
+  background: var(--color-yellow-soft);
+  color: var(--color-primary-strong);
+  padding: 5px 10px;
+  font-size: 0.8rem;
 }
