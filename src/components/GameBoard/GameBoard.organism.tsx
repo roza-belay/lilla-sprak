@@ -7,12 +7,15 @@ import LanguageCard from '../LanguageCard'
 import ScoreBoard from '../ScoreBoard'
 import styles from './GameBoard.module.css'
 
+
 const categories: { label: string; value: LearningKind | 'all' }[] = [
   { label: 'Allt', value: 'all' },
   { label: 'Bokstäver', value: 'letter' },
   { label: 'Siffror', value: 'number' },
   { label: 'Djur', value: 'animal' },
+  { label: 'Kroppsdelar', value: 'bodyPart' },
 ]
+
 
 type AudioWindow = Window &
   typeof globalThis & {
@@ -80,7 +83,20 @@ const GameBoard = () => {
       : learningItems.filter((item) => item.kind === category)
   }, [category])
 
-  const currentItem = questions[roundIndex % questions.length]
+  
+const currentItem = questions[roundIndex % questions.length]
+
+const displayedOptions = useMemo(() => {
+  const shuffled = [...currentItem.options]
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+
+  return shuffled
+}, [currentItem])
+
   const isLocked = selectedAnswer !== null
   const isCorrect = selectedAnswer === currentItem.answer
 
@@ -140,7 +156,7 @@ const GameBoard = () => {
         <GamePrompt item={currentItem} feedback={feedback} />
 
         <div className={styles.options}>
-          {currentItem.options.map((option) => {
+          {displayedOptions.map((option) => {
             const isOptionCorrect = option.label === currentItem.answer
 
             return (
