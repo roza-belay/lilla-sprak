@@ -192,8 +192,99 @@ const animalItems: LearningItem[] = animals.map((animal, index) => ({
   hint: `${animal[1]} säger ${animal[4]}.`,
 }))
 
+
+const bodyParts = [
+  {
+    id: 'eye',
+    svenska: 'Öga',
+    tigrinja: 'ዓይኒ',
+    picture: '👀',
+    functionSv: 'Ögat hjälper oss att se.',
+    functionTi: 'ዓይኒ ንኽንርኢ ይሕግዘና።',
+  },
+  {
+    id: 'ear',
+    svenska: 'Öra',
+    tigrinja: 'እዝኒ',
+    picture: '👂',
+    functionSv: 'Örat hjälper oss att höra.',
+    functionTi: 'እዝኒ ንኽንሰምዕ ይሕግዘና።',
+  },
+  {
+    id: 'nose',
+    svenska: 'Näsa',
+    tigrinja: 'ኣፍንጫ',
+    picture: '👃',
+    functionSv: 'Näsan hjälper oss att lukta.',
+    functionTi: 'ኣፍንጫ ንኽንሽትት ይሕግዘና።',
+  },
+  {
+    id: 'mouth',
+    svenska: 'Mun',
+    tigrinja: 'ኣፍ',
+    picture: '👄',
+    functionSv: 'Med munnen äter och pratar vi.',
+    functionTi: 'ብኣፍና ንበልዕን ንዛረብን።',
+  },
+  {
+    id: 'hand',
+    svenska: 'Hand',
+    tigrinja: 'ኢድ',
+    picture: '🖐️',
+    functionSv: 'Handen hjälper oss att hålla saker.',
+    functionTi: 'ኢድና ነገራት ንኽንሕዝ ይሕግዘና።',
+  },
+  {
+    id: 'foot',
+    svenska: 'Fot',
+    tigrinja: 'እግሪ',
+    picture: '🦶',
+    functionSv: 'Foten hjälper oss att gå.',
+    functionTi: 'እግርና ንኽንከይድ ይሕግዘና።',
+  },
+] as const
+
+const bodyPartItems: LearningItem[] = bodyParts.map((part, index) => {
+  const answer = `${part.svenska} · ${part.tigrinja}`
+
+  const otherParts = bodyParts.filter(
+    (candidate) => candidate.id !== part.id,
+  )
+
+  const distractors = [
+    otherParts[(index * 2) % otherParts.length],
+    otherParts[(index * 2 + 1) % otherParts.length],
+  ]
+
+  return {
+    id: `body-${part.id}`,
+    kind: 'bodyPart',
+    language,
+    prompt: `Vad heter kroppsdelen på svenska och tigrinja?`,
+    answer,
+    picture: part.picture,
+    svenska: part.svenska,
+    tigrinja: part.tigrinja,
+    hint: `${part.functionSv} ${part.functionTi}`,
+    options: [
+      option(answer, `${part.functionSv}\n${part.functionTi}`, part.picture),
+      ...distractors.map((other) =>
+        option(
+          `${other.svenska} · ${other.tigrinja}`,
+          `${other.functionSv}\n${other.functionTi}`,
+          other.picture,
+        ),
+      ),
+    ],
+  }
+})
+
 export const learningItems: LearningItem[] = [
   ...letterItems,
   ...numberItems,
   ...animalItems,
+  ...bodyPartItems,
 ]
+
+
+
