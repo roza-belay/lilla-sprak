@@ -10,6 +10,7 @@ const kindLabels: Record<LearningItem['kind'], string> = {
   letter: 'Bokstav',
   number: 'Siffra',
   animal: 'Djur',
+  bodyPart: 'Kroppsdelar'
 }
 
 const GamePrompt = ({ item, feedback }: GamePromptProps) => {

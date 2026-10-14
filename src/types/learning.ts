@@ -1,4 +1,5 @@
-export type LearningKind = 'letter' | 'number' | 'animal'
+
+export type LearningKind = 'letter' | 'number' | 'animal' | 'bodyPart'
 
 export type LearningOption = {
   label: string
